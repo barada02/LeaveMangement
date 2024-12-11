@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Leave Management System</title>
+    <link rel="stylesheet" href="dashStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="admin-info">
+                        <h3 id="userName">Loading...</h3>
+                        <p id="userRole">Loading...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#" onclick="loadContent('home')">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#employee">
+                            <i class="fas fa-users"></i>
+                            <span>Employee</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadContent('leaveMS')">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Leave MS</span>
+                        </a>
+                    </li>
+                    <li class="logout">
+                        <a href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Check authentication
+        function checkAuth() {
+            try {
+                const userData = localStorage.getItem('user');
+                console.log('Stored user data:', userData);
+                
+                if (!userData) {
+                    console.log('No user data found, redirecting to login');
+                    window.location.href = '../login/login.html';
+                    return;
+                }
+                
+                const user = JSON.parse(userData);
+                console.log('Parsed user data:', user);
+                
+                // Update user info in sidebar
+                $('#userName').text(user.name || 'Unknown User');
+                $('#userRole').text(user.role ? (user.role.charAt(0).toUpperCase() + user.role.slice(1)) : 'Unknown Role');
+                
+                // Also display department if available
+                if (user.department) {
+                    $('#userRole').text(user.department + ' - ' + $('#userRole').text());
+                }
+            } catch (error) {
+                console.error('Error checking auth:', error);
+                window.location.href = '../login/login.html';
+            }
+        }
+
+        // Handle logout
+        function logout() {
+            localStorage.removeItem('user');
+            window.location.href = '../login/login.html';
+        }
+
+        // Run on page load
+        $(document).ready(function() {
+            checkAuth();
+            loadContent('home');
+        });
+
+        // Sidebar toggle functionality
+        document.getElementById('sidebar-toggle').addEventListener('click', function() {
+            document.querySelector('.dashboard-container').classList.toggle('sidebar-collapsed');
+        });
+
+        // Dynamic content loading using AJAX
+        function loadContent(page) {
+            const mainContent = document.querySelector('.dashboard-content');
+            
+            // Show loading state
+            mainContent.innerHTML = '<div class="loading">Loading...</div>';
+            
+            // Load the content using AJAX
+            $.ajax({
+                url: `templates/${page}.html`,
+                method: 'GET',
+                success: function(response) {
+                    mainContent.innerHTML = response;
+                },
+                error: function(xhr, status, error) {
+                    mainContent.innerHTML = '<div class="error">Error loading content. Please try again.</div>';
+                    console.error('Error:', error);
+                }
+            });
+                
+            // Update active state in sidebar
+            document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+            event.currentTarget.parentElement.classList.add('active');
+        }
+
+        // Add some basic styles
+        const styles = `
+            .loading {
+                text-align: center;
+                padding: 20px;
+                font-size: 1.2em;
+                color: #666;
+            }
+            .error {
+                text-align: center;
+                padding: 20px;
+                color: #e74c3c;
+                background: #fde8e7;
+                border-radius: 5px;
+            }
+        `;
+        const styleSheet = document.createElement("style");
+        styleSheet.textContent = styles;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>

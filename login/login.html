@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="loginStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="company-logo">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="form-container">
+                <h1>Login</h1>
+                <p class="subtitle">Please login to your account</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" name="username" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required>
+                            <i class="fas fa-eye-slash toggle-password"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="options">
+                        <label class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="login-btn">Login to Dashboard</button>
+                </form>
+
+                <footer class="login-footer">
+                    <p> 2024 Company Name. All rights reserved.</p>
+                    <p class="support">Need help? Contact IT Support</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Toggle password visibility
+            $('.toggle-password').click(function() {
+                const passwordInput = $('#password');
+                const icon = $(this);
+                
+                if (passwordInput.attr('type') === 'password') {
+                    passwordInput.attr('type', 'text');
+                    icon.removeClass('fa-eye-slash').addClass('fa-eye');
+                } else {
+                    passwordInput.attr('type', 'password');
+                    icon.removeClass('fa-eye').addClass('fa-eye-slash');
+                }
+            });
+
+            // Handle form submission
+            $('#loginForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const username = $('#username').val();
+                const password = $('#password').val();
+                
+                // Show loading state
+                $('.login-btn').prop('disabled', true).text('Logging in...');
+                
+                // Make API call to login
+                $.ajax({
+                    url: '../api/auth.php?action=login',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        username: username,
+                        password: password
+                    }),
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            // Store user data in localStorage
+                            localStorage.setItem('user', JSON.stringify(response.data));
+                            
+                            // Redirect to dashboard
+                            window.location.href = '../dashboard/adminDash.html';
+                        } else {
+                            alert(response.message || 'Login failed. Please try again.');
+                            $('.login-btn').prop('disabled', false).text('Login to Dashboard');
+                        }
+                    },
+                    error: function() {
+                        alert('An error occurred. Please try again.');
+                        $('.login-btn').prop('disabled', false).text('Login to Dashboard');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

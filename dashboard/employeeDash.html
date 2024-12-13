@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Leave Management System</title>
+    <title>Employee Dashboard - Leave Management System</title>
     <link rel="stylesheet" href="dashStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -32,15 +32,27 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" onclick="loadContent('employee')">
-                            <i class="fas fa-users"></i>
-                            <span>Employee</span>
+                        <a href="#" onclick="loadContent('leave-request')">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Apply Leave</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#" onclick="loadContent('leaveMS')">
-                            <i class="fas fa-calendar-alt"></i>
-                            <span>Leave MS</span>
+                        <a href="#" onclick="loadContent('leave-history')">
+                            <i class="fas fa-history"></i>
+                            <span>Leave History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadContent('leave-balance')">
+                            <i class="fas fa-calculator"></i>
+                            <span>Leave Balance</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadContent('profile')">
+                            <i class="fas fa-user-cog"></i>
+                            <span>Profile</span>
                         </a>
                     </li>
                     <li class="logout">
@@ -69,7 +81,7 @@
                     </div>
                     <div class="notifications">
                         <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
+                        <span class="notification-badge">0</span>
                     </div>
                 </div>
             </header>
@@ -82,29 +94,27 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Check authentication
+        // Check authentication and role
         function checkAuth() {
             try {
                 const userData = localStorage.getItem('user');
-                console.log('Stored user data:', userData);
-                
                 if (!userData) {
-                    console.log('No user data found, redirecting to login');
                     window.location.href = '../login/login.html';
                     return;
                 }
                 
                 const user = JSON.parse(userData);
-                console.log('Parsed user data:', user);
+                
+                // Check if user has employee role
+                if (user.role !== 'employee') {
+                    window.location.href = '../login/login.html';
+                    return;
+                }
                 
                 // Update user info in sidebar
                 $('#userName').text(user.name || 'Unknown User');
-                $('#userRole').text(user.role ? (user.role.charAt(0).toUpperCase() + user.role.slice(1)) : 'Unknown Role');
+                $('#userRole').text(user.role || 'Employee');
                 
-                // Also display department if available
-                if (user.department) {
-                    $('#userRole').text(user.department + ' - ' + $('#userRole').text());
-                }
             } catch (error) {
                 console.error('Error checking auth:', error);
                 window.location.href = '../login/login.html';
@@ -117,62 +127,69 @@
             window.location.href = '../login/login.html';
         }
 
+        // Dynamic content loading
+        function loadContent(page, event = null) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Remove active class from all links
+            $('.sidebar-nav li').removeClass('active');
+            // Add active class to clicked link
+            $(`a[onclick="loadContent('${page}')"]`).parent().addClass('active');
+
+            const contentDiv = $('.dashboard-content');
+            contentDiv.html('<div class="loading">Loading...</div>');
+
+            // Map pages to their template files
+            const templateMap = {
+                'home': 'employee-home.html',
+                'leave-request': 'leave-request.html',
+                'leave-history': 'leave-history.html',
+                'leave-balance': 'leave-balance.html',
+                'profile': 'profile.html'
+            };
+
+            // Get the correct template file
+            const templateFile = templateMap[page] || `${page}.html`;
+
+            // Load content based on page
+            $.get(`templates/${templateFile}`)
+                .done(function(response) {
+                    contentDiv.html(response);
+                })
+                .fail(function(error) {
+                    contentDiv.html('<div class="error">Error loading content</div>');
+                    console.error('Error loading content:', error);
+                });
+        }
+
         // Run on page load
         $(document).ready(function() {
             checkAuth();
             loadContent('home');
-        });
 
-        // Sidebar toggle functionality
-        document.getElementById('sidebar-toggle').addEventListener('click', function() {
-            document.querySelector('.dashboard-container').classList.toggle('sidebar-collapsed');
-        });
-
-        // Dynamic content loading using AJAX
-        function loadContent(page, event = null) {
-            const mainContent = document.querySelector('.dashboard-content');
-            
-            // Show loading state
-            mainContent.innerHTML = '<div class="loading">Loading...</div>';
-            
-            // Load the content using AJAX
-            $.ajax({
-                url: `templates/${page}.html`,
-                method: 'GET',
-                success: function(response) {
-                    mainContent.innerHTML = response;
-                },
-                error: function(xhr, status, error) {
-                    mainContent.innerHTML = '<div class="error">Error loading content. Please try again.</div>';
-                    console.error('Error:', error);
-                }
+            // Toggle sidebar
+            $('#sidebar-toggle').click(function() {
+                $('.dashboard-container').toggleClass('sidebar-collapsed');
             });
-                
-            // Update active state in sidebar only if event is provided
-            if (event) {
-                document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
-                event.currentTarget.parentElement.classList.add('active');
-            }
-        }
+        });
 
         // Add some basic styles
         const styles = `
             .loading {
                 text-align: center;
                 padding: 20px;
-                font-size: 1.2em;
-                color: #666;
             }
             .error {
+                color: red;
                 text-align: center;
                 padding: 20px;
-                color: #e74c3c;
-                background: #fde8e7;
-                border-radius: 5px;
             }
         `;
+        
         const styleSheet = document.createElement("style");
-        styleSheet.textContent = styles;
+        styleSheet.innerText = styles;
         document.head.appendChild(styleSheet);
     </script>
 </body>

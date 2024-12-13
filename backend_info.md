@@ -6,6 +6,7 @@ xampp Server
 database name: leave_ms
 database schema:
 
+-- Create employee_details Table
 CREATE TABLE employee_details (
     employee_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
@@ -15,17 +16,18 @@ CREATE TABLE employee_details (
     status ENUM('active', 'inactive') DEFAULT 'active'
 );
 
-
+-- Create user_credentials Table (with petname and password hashing placeholder)
 CREATE TABLE user_credentials (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     employee_id INT NOT NULL,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL, -- For bcrypt-hashed passwords
+    petname VARCHAR(50) NOT NULL,  -- Secondary verification option
     role ENUM('employee', 'manager', 'admin') DEFAULT 'employee',
     FOREIGN KEY (employee_id) REFERENCES employee_details(employee_id) ON DELETE CASCADE
 );
 
-
+-- Create leave_balance Table
 CREATE TABLE leave_balance (
     balance_id INT AUTO_INCREMENT PRIMARY KEY,
     employee_id INT NOT NULL,
@@ -38,7 +40,7 @@ CREATE TABLE leave_balance (
     FOREIGN KEY (employee_id) REFERENCES employee_details(employee_id) ON DELETE CASCADE
 );
 
-
+-- Create leave_log Table
 CREATE TABLE leave_log (
     leave_log_id INT AUTO_INCREMENT PRIMARY KEY,
     employee_id INT NOT NULL,

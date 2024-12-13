@@ -48,7 +48,8 @@ function login($username, $password) {
         'name' => $user['name'],
         'email' => $user['email'],
         'department' => $user['department'],
-        'role' => $user['role']
+        'role' => $user['role'],
+        'username' => $user['username'] // Adding username for frontend use
     ];
     
     // Double check the employee details

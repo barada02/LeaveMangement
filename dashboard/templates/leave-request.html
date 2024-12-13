@@ -1,0 +1,61 @@
+<div class="leave-request-container">
+    <h2>Apply for Leave</h2>
+    <form id="leaveRequestForm" class="leave-form">
+        <div class="form-group">
+            <label for="leaveType">Leave Type</label>
+            <select id="leaveType" name="leaveType" required>
+                <option value="">Select Leave Type</option>
+                <option value="sick">Sick Leave</option>
+                <option value="casual">Casual Leave</option>
+                <option value="earned">Earned Leave</option>
+                <option value="festival">Festival Leave</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="reason">Reason</label>
+            <textarea id="reason" name="reason" rows="4" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn-submit">Submit Request</button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#leaveRequestForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = {
+            leaveType: $('#leaveType').val(),
+            startDate: $('#startDate').val(),
+            endDate: $('#endDate').val(),
+            reason: $('#reason').val(),
+            employeeId: JSON.parse(localStorage.getItem('user')).employee_id
+        };
+        
+        $.ajax({
+            url: '../api/leave.php',
+            type: 'POST',
+            data: { action: 'apply', ...formData },
+            success: function(response) {
+                alert('Leave request submitted successfully!');
+                $('#leaveRequestForm')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                alert('Error submitting leave request: ' + error);
+            }
+        });
+    });
+});
+</script>

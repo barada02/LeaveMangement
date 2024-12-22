@@ -3,7 +3,7 @@ techStach:
 html, css, javascript, ajax,php,jquery mysql
 xampp Server
 
-database name: leave_ms
+database name: leavems
 database schema:
 
 -- Create employee_details Table

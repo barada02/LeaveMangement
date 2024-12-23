@@ -1,12 +1,10 @@
 <?php
 require_once 'config.php';
+require_once 'session.php';
 
 // User login
 function login($username, $password) {
     $conn = getDBConnection();
-    
-    // Debug: Log the username
-    error_log("Login attempt for username: " . $username);
     
     // First get the user credentials
     $sql = "SELECT uc.*, ed.name, ed.email, ed.department 
@@ -20,27 +18,13 @@ function login($username, $password) {
     $result = $stmt->get_result();
     $user = $result->fetch_assoc();
     
-    // Debug: Log detailed user data
-    error_log("User data found: " . ($user ? "Yes" : "No"));
-    if ($user) {
-        error_log("User ID: " . $user['user_id']);
-        error_log("Employee ID: " . $user['employee_id']);
-        error_log("Name: " . $user['name']);
-        error_log("Department: " . $user['department']);
-    }
-    
     if (!$user) {
-        error_log("No user found with username: " . $username);
         return ['status' => 'error', 'message' => 'Invalid username'];
     }
     
     if (!password_verify($password, $user['password'])) {
-        error_log("Invalid password for username: " . $username);
         return ['status' => 'error', 'message' => 'Invalid password'];
     }
-    
-    // Debug: Log successful login
-    error_log("Login successful for user: " . $user['name']);
     
     // Create a clean user object without sensitive data
     $userResponse = [
@@ -49,22 +33,11 @@ function login($username, $password) {
         'email' => $user['email'],
         'department' => $user['department'],
         'role' => $user['role'],
-        'username' => $user['username'] // Adding username for frontend use
+        'username' => $user['username']
     ];
     
-    // Double check the employee details
-    $checkSql = "SELECT * FROM employee_details WHERE employee_id = ?";
-    $checkStmt = $conn->prepare($checkSql);
-    $checkStmt->bind_param("i", $user['employee_id']);
-    $checkStmt->execute();
-    $employeeResult = $checkStmt->get_result();
-    $employeeData = $employeeResult->fetch_assoc();
-    
-    if ($employeeData) {
-        error_log("Employee verification - Name matches: " . ($employeeData['name'] === $user['name'] ? "Yes" : "No"));
-        error_log("Database employee name: " . $employeeData['name']);
-        error_log("Joined user name: " . $user['name']);
-    }
+    // Set the session
+    setUserSession($userResponse);
     
     return ['status' => 'success', 'user' => $userResponse];
 }
@@ -79,18 +52,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (isset($data['username'], $data['password'])) {
                 $result = login($data['username'], $data['password']);
                 if ($result['status'] === 'success') {
-                    error_log("Sending response data: " . print_r($result['user'], true));
+                    session_write_close(); // Ensure session is written
                 }
-                sendResponse($result['status'], 
-                           $result['status'] === 'success' ? 'Login successful' : $result['message'],
-                           $result['status'] === 'success' ? $result['user'] : null);
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'status' => $result['status'],
+                    'message' => $result['status'] === 'success' ? 'Login successful' : $result['message'],
+                    'data' => $result['status'] === 'success' ? $result['user'] : null
+                ]);
             } else {
-                sendResponse('error', 'Username and password are required');
+                header('Content-Type: application/json');
+                echo json_encode(['status' => 'error', 'message' => 'Username and password are required']);
             }
             break;
             
+        case 'logout':
+            clearUserSession();
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'success', 'message' => 'Logged out successfully']);
+            break;
+            
         default:
-            sendResponse('error', 'Invalid action');
+            header('Content-Type: application/json');
+            echo json_encode(['status' => 'error', 'message' => 'Invalid action']);
     }
+    exit;
 }
 ?>

@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Check if user is logged in
 function isLoggedIn() {
@@ -20,5 +23,15 @@ function setUserSession($userData) {
 function clearUserSession() {
     session_unset();
     session_destroy();
+}
+
+// Function to check session status
+function checkSession() {
+    if (!isLoggedIn()) {
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'error', 'message' => 'Not authenticated']);
+        exit;
+    }
+    return getCurrentUser();
 }
 ?>

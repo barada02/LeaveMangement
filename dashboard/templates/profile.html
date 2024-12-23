@@ -86,28 +86,28 @@
 
 <script>
 $(document).ready(function() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    
-    // Load profile information
+    // Fetch profile data
     $.ajax({
-        url: '../api/auth.php',
-        type: 'GET',
-        data: {
-            action: 'profile',
-            employee_id: user.employee_id
-        },
+        url: '../api/profile.php',
+        method: 'GET',
+        dataType: 'json',
         success: function(response) {
-            const profile = response.data;
-            
-            $('#profileName').text(profile.name);
-            $('#profileEmail').text(profile.email);
-            $('#profileDepartment').text(profile.department);
-            $('#profileEmployeeId').text(profile.employee_id);
-            $('#profileDateJoined').text(profile.date_joined);
-            $('#profileStatus').text(profile.status);
+            if (response.status === 'success' && response.data) {
+                const profile = response.data;
+                $('#profileName').text(profile.name || 'N/A');
+                $('#profileEmail').text(profile.email || 'N/A');
+                $('#profileDepartment').text(profile.department || 'N/A');
+                $('#profileEmployeeId').text(profile.employee_id || 'N/A');
+                $('#profileDateJoined').text(profile.date_joined ? new Date(profile.date_joined).toLocaleDateString() : 'N/A');
+                $('#profileStatus').text(profile.status || 'N/A');
+            } else {
+                console.error('Failed to load profile data:', response.message);
+                alert('Failed to load profile data: ' + (response.message || 'Unknown error'));
+            }
         },
         error: function(xhr, status, error) {
-            alert('Error loading profile: ' + error);
+            console.error('Error loading profile data:', error);
+            alert('Error loading profile data. Please try again later.');
         }
     });
     

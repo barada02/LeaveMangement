@@ -584,3 +584,8 @@ Stack trace:
 [25-Dec-2024 15:55:05 Europe/Berlin] Attempting to connect to database...
 [25-Dec-2024 15:55:05 Europe/Berlin] Database connection successful
 [25-Dec-2024 15:55:05 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[{"leave_log_id":17,"employee_id":8,"leave_type":"earned","start_date":"2025-01-02","end_date":"2025-01-03","reason":"Family time","status":"approved","manager_id":1,"date_applied":"2024-12-25 20:24:12","date_updated":"2024-12-25 20:24:45","note":"Enjoy"},{"leave_log_id":16,"employee_id":8,"leave_type":"earned","start_date":"2024-12-26","end_date":"2024-12-30","reason":"good performed","status":"approved","manager_id":1,"date_applied":"2024-12-25 18:51:20","date_updated":"2024-12-25 18:52:31","note":"Done enjoy"},{"leave_log_id":5,"employee_id":8,"leave_type":"sick","start_date":"2024-06-01","end_date":"2024-06-02","reason":"Migraine issue","status":"rejected","manager_id":2,"date_applied":"2024-12-20 13:31:46","date_updated":"2024-12-20 13:31:46","note":"Insufficient leave balance"}]}
+[25-Dec-2024 16:24:16 Europe/Berlin] Attempting to connect to database...
+[25-Dec-2024 16:24:16 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'leave_ms' in C:\xampp\htdocs\leavems\LeaveMangement\api\config.php on line 24
+[25-Dec-2024 16:24:16 Europe/Berlin] Database connection failed: Unknown database 'leave_ms'
+[25-Dec-2024 16:24:16 Europe/Berlin] Database error: Database connection failed: Unknown database 'leave_ms'
+[25-Dec-2024 16:24:16 Europe/Berlin] Sending response: {"status":false,"message":"Database connection error: Database connection failed: Unknown database 'leave_ms'","data":null}

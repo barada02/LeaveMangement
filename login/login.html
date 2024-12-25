@@ -95,8 +95,16 @@
                             // Store user data in localStorage
                             localStorage.setItem('user', JSON.stringify(response.data));
                             
-                            // Redirect to dashboard
-                            window.location.href = '../dashboard/adminDash.html';
+                            // Redirect based on user role
+                            const userRole = response.data.role;
+                            if (userRole === 'admin') {
+                                window.location.href = '../dashboard/adminDash.html';
+                            } else if (userRole === 'employee') {
+                                window.location.href = '../dashboard/employeeDash.html';
+                            } else {
+                                alert('Invalid user role');
+                                localStorage.removeItem('user');
+                            }
                         } else {
                             alert(response.message || 'Login failed. Please try again.');
                             $('.login-btn').prop('disabled', false).text('Login to Dashboard');

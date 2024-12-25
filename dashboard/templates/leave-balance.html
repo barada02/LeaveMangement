@@ -1,0 +1,68 @@
+<div class="leave-balance-container">
+    <h2>Leave Balance</h2>
+    
+    <div class="balance-cards">
+        <div class="balance-card sick-leave">
+            <i class="fas fa-procedures"></i>
+            <h3>Sick Leave</h3>
+            <p class="balance" id="sickLeaveBalance">Loading...</p>
+        </div>
+        
+        <div class="balance-card casual-leave">
+            <i class="fas fa-umbrella-beach"></i>
+            <h3>Casual Leave</h3>
+            <p class="balance" id="casualLeaveBalance">Loading...</p>
+        </div>
+        
+        <div class="balance-card earned-leave">
+            <i class="fas fa-medal"></i>
+            <h3>Earned Leave</h3>
+            <p class="balance" id="earnedLeaveBalance">Loading...</p>
+        </div>
+        
+        <div class="balance-card festival-leave">
+            <i class="fas fa-gifts"></i>
+            <h3>Festival Leave</h3>
+            <p class="balance" id="festivalLeaveBalance">Loading...</p>
+        </div>
+    </div>
+    
+    <div class="total-summary">
+        <div class="summary-card">
+            <h3>Total Leave Balance</h3>
+            <p class="total" id="totalLeaveBalance">Loading...</p>
+        </div>
+        <div class="summary-card">
+            <h3>Leave Taken</h3>
+            <p class="taken" id="leaveTaken">Loading...</p>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    const userId = JSON.parse(localStorage.getItem('user')).employee_id;
+    
+    $.ajax({
+        url: '../api/leave.php',
+        type: 'GET',
+        data: {
+            action: 'balance',
+            employee_id: userId
+        },
+        success: function(response) {
+            const balance = response.data;
+            
+            $('#sickLeaveBalance').text(balance.sick_leave);
+            $('#casualLeaveBalance').text(balance.casual_leave);
+            $('#earnedLeaveBalance').text(balance.earned_leave);
+            $('#festivalLeaveBalance').text(balance.festival_leave);
+            $('#totalLeaveBalance').text(balance.total_leave_left);
+            $('#leaveTaken').text(balance.total_leave - balance.total_leave_left);
+        },
+        error: function(xhr, status, error) {
+            alert('Error loading leave balance: ' + error);
+        }
+    });
+});
+</script>

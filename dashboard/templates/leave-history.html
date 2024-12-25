@@ -1,0 +1,83 @@
+<div class="leave-history-container">
+    <h2>Leave History</h2>
+    <div class="filters">
+        <select id="statusFilter">
+            <option value="">All Status</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+        </select>
+        <select id="typeFilter">
+            <option value="">All Types</option>
+            <option value="sick">Sick Leave</option>
+            <option value="casual">Casual Leave</option>
+            <option value="earned">Earned Leave</option>
+            <option value="festival">Festival Leave</option>
+        </select>
+    </div>
+    
+    <div class="leave-history-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Leave Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Status</th>
+                    <th>Applied On</th>
+                    <th>Manager Note</th>
+                </tr>
+            </thead>
+            <tbody id="leaveHistoryBody">
+                <!-- Data will be loaded dynamically -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    loadLeaveHistory();
+    
+    $('#statusFilter, #typeFilter').on('change', function() {
+        loadLeaveHistory();
+    });
+    
+    function loadLeaveHistory() {
+        const userId = JSON.parse(localStorage.getItem('user')).employee_id;
+        const statusFilter = $('#statusFilter').val();
+        const typeFilter = $('#typeFilter').val();
+        
+        $.ajax({
+            url: '../api/leave.php',
+            type: 'GET',
+            data: {
+                action: 'history',
+                employee_id: userId,
+                status: statusFilter,
+                type: typeFilter
+            },
+            success: function(response) {
+                const tbody = $('#leaveHistoryBody');
+                tbody.empty();
+                
+                response.data.forEach(leave => {
+                    tbody.append(`
+                        <tr>
+                            <td>${leave.leave_type}</td>
+                            <td>${leave.start_date}</td>
+                            <td>${leave.end_date}</td>
+                            <td><span class="status-${leave.status.toLowerCase()}">${leave.status}</span></td>
+                            <td>${leave.date_applied}</td>
+                            <td>${leave.note || '-'}</td>
+                        </tr>
+                    `);
+                });
+            },
+            error: function(xhr, status, error) {
+                alert('Error loading leave history: ' + error);
+            }
+        });
+    }
+});
+</script>

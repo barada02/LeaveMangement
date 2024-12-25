@@ -1,0 +1,180 @@
+<div class="profile-container">
+    <h2>Profile Information</h2>
+    
+    <div class="profile-content">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle fa-5x"></i>
+            </div>
+            <div class="profile-summary">
+                <h3 id="profileName">Loading...</h3>
+                <p id="profileEmail">Loading...</p>
+                <p id="profileDepartment">Loading...</p>
+            </div>
+        </div>
+        
+        <div class="profile-details">
+            <div class="detail-group">
+                <label>Employee ID</label>
+                <p id="profileEmployeeId">Loading...</p>
+            </div>
+            
+            <div class="detail-group">
+                <label>Date Joined</label>
+                <p id="profileDateJoined">Loading...</p>
+            </div>
+            
+            <div class="detail-group">
+                <label>Status</label>
+                <p id="profileStatus">Loading...</p>
+            </div>
+        </div>
+        
+        <div class="security-section">
+            <h3>Security Settings</h3>
+            <button id="changePasswordBtn" class="btn-secondary">Change Password</button>
+            <button id="changePetNameBtn" class="btn-secondary">Change Pet Name</button>
+        </div>
+    </div>
+</div>
+
+<!-- Change Password Modal -->
+<div id="passwordModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Change Password</h3>
+        <form id="changePasswordForm">
+            <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" id="currentPassword" required>
+            </div>
+            <div class="form-group">
+                <label>New Password</label>
+                <input type="password" id="newPassword" required>
+            </div>
+            <div class="form-group">
+                <label>Confirm New Password</label>
+                <input type="password" id="confirmPassword" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn-primary">Update Password</button>
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Change Pet Name Modal -->
+<div id="petNameModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <h3>Change Pet Name</h3>
+        <form id="changePetNameForm">
+            <div class="form-group">
+                <label>Current Password</label>
+                <input type="password" id="petNameCurrentPassword" required>
+            </div>
+            <div class="form-group">
+                <label>New Pet Name</label>
+                <input type="text" id="newPetName" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn-primary">Update Pet Name</button>
+                <button type="button" class="btn-secondary close-modal">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Fetch profile data
+    $.ajax({
+        url: '../api/profile.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+            if (response.status === 'success' && response.data) {
+                const profile = response.data;
+                $('#profileName').text(profile.name || 'N/A');
+                $('#profileEmail').text(profile.email || 'N/A');
+                $('#profileDepartment').text(profile.department || 'N/A');
+                $('#profileEmployeeId').text(profile.employee_id || 'N/A');
+                $('#profileDateJoined').text(profile.date_joined ? new Date(profile.date_joined).toLocaleDateString() : 'N/A');
+                $('#profileStatus').text(profile.status || 'N/A');
+            } else {
+                console.error('Failed to load profile data:', response.message);
+                alert('Failed to load profile data: ' + (response.message || 'Unknown error'));
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error loading profile data:', error);
+            alert('Error loading profile data. Please try again later.');
+        }
+    });
+    
+    // Modal handlers
+    $('#changePasswordBtn').click(function() {
+        $('#passwordModal').show();
+    });
+    
+    $('#changePetNameBtn').click(function() {
+        $('#petNameModal').show();
+    });
+    
+    $('.close-modal').click(function() {
+        $('.modal').hide();
+    });
+    
+    // Change password form handler
+    $('#changePasswordForm').submit(function(e) {
+        e.preventDefault();
+        
+        if ($('#newPassword').val() !== $('#confirmPassword').val()) {
+            alert('New passwords do not match!');
+            return;
+        }
+        
+        $.ajax({
+            url: '../api/auth.php',
+            type: 'POST',
+            data: {
+                action: 'change_password',
+                employee_id: user.employee_id,
+                current_password: $('#currentPassword').val(),
+                new_password: $('#newPassword').val()
+            },
+            success: function(response) {
+                alert('Password updated successfully!');
+                $('#passwordModal').hide();
+                $('#changePasswordForm')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                alert('Error updating password: ' + error);
+            }
+        });
+    });
+    
+    // Change pet name form handler
+    $('#changePetNameForm').submit(function(e) {
+        e.preventDefault();
+        
+        $.ajax({
+            url: '../api/auth.php',
+            type: 'POST',
+            data: {
+                action: 'change_petname',
+                employee_id: user.employee_id,
+                current_password: $('#petNameCurrentPassword').val(),
+                new_petname: $('#newPetName').val()
+            },
+            success: function(response) {
+                alert('Pet name updated successfully!');
+                $('#petNameModal').hide();
+                $('#changePetNameForm')[0].reset();
+            },
+            error: function(xhr, status, error) {
+                alert('Error updating pet name: ' + error);
+            }
+        });
+    });
+});
+</script>

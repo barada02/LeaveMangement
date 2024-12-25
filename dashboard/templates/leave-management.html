@@ -1,0 +1,538 @@
+<!-- Leave Management Section -->
+<div class="leave-management">
+    <div class="section-header">
+        <h2>Leave Management</h2>
+        <div class="filters">
+            <select id="statusFilter" onchange="loadLeaveRequests()" class="form-select">
+                <option value="all">All Requests</option>
+                <option value="pending" selected>Pending</option>
+                <option value="approved">Approved</option>
+                <option value="rejected">Rejected</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Leave Requests Table -->
+    <div class="leave-requests">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>Employee</th>
+                        <th>Leave Type</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Days</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="leaveRequestsBody">
+                    <!-- Data will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Note Modal -->
+<div id="noteModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modalTitle">Add Note</h3>
+            <span class="close" onclick="closeNoteModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="noteText">Note (Optional)</label>
+                <textarea id="noteText" class="form-control" rows="4" 
+                    placeholder="Enter your note or reason..."></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeNoteModal()">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-primary" onclick="submitWithNote()">
+                Submit
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.leave-management {
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.form-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    min-width: 150px;
+    font-size: 14px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+}
+
+.table th {
+    background: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+    padding: 12px;
+    font-size: 14px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td {
+    padding: 12px;
+    vertical-align: middle;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+.badge-pending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.badge-approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.badge-rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s ease;
+}
+
+.btn i {
+    font-size: 12px;
+}
+
+.btn-approve {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-approve:hover {
+    background-color: #218838;
+}
+
+.btn-reject {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 5px;
+}
+
+.btn-reject:hover {
+    background-color: #c82333;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    animation: slideIn 0.3s;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: #2c3e50;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.note-icon {
+    color: #6c757d;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.note-icon:hover {
+    color: #007bff;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.reason-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .btn {
+        padding: 4px 8px;
+        font-size: 12px;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+        width: 95%;
+    }
+}
+</style>
+
+<script>
+let currentRequestId = null;
+let currentAction = null;
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLeaveRequests();
+});
+
+async function loadLeaveRequests() {
+    const tbody = document.getElementById('leaveRequestsBody');
+    tbody.innerHTML = `
+        <tr>
+            <td colspan="9" class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </td>
+        </tr>
+    `;
+
+    try {
+        const response = await fetch('../api/get_leave_requests.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                admin_id: getAdminId(),
+                status: document.getElementById('statusFilter').value
+            })
+        });
+
+        const data = await response.json();
+
+        if (!data.status) {
+            throw new Error(data.message || 'Failed to load leave requests');
+        }
+
+        const requests = data.data.requests;
+        
+        if (requests.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="9" class="text-center">
+                        No leave requests found
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        tbody.innerHTML = '';
+        requests.forEach(request => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${request.leave_log_id}</td>
+                <td>${request.employee_name}</td>
+                <td>${request.leave_type}</td>
+                <td>${request.from_date}</td>
+                <td>${request.to_date}</td>
+                <td>${request.days}</td>
+                <td class="reason-cell" title="${request.reason}">${request.reason}</td>
+                <td>
+                    <span class="badge badge-${request.status.toLowerCase()}">
+                        ${request.status}
+                    </span>
+                    ${request.note ? `
+                        <div class="tooltip">
+                            <i class="fas fa-info-circle note-icon"></i>
+                            <span class="tooltiptext">${request.note}</span>
+                        </div>
+                    ` : ''}
+                </td>
+                <td>
+                    ${request.status === 'Pending' ? `
+                        <button class="btn btn-approve" onclick="showNoteModal(${request.leave_log_id}, 'approve')">
+                            <i class="fas fa-check"></i> Approve
+                        </button>
+                        <button class="btn btn-reject" onclick="showNoteModal(${request.leave_log_id}, 'reject')">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                    ` : ''}
+                </td>
+            `;
+            tbody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="9" class="text-center text-danger">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Failed to load leave requests: ${error.message}
+                </td>
+            </tr>
+        `;
+    }
+}
+
+function showNoteModal(requestId, action) {
+    currentRequestId = requestId;
+    currentAction = action;
+    document.getElementById('modalTitle').textContent = 
+        `${action.charAt(0).toUpperCase() + action.slice(1)} Leave Request`;
+    document.getElementById('noteText').value = '';
+    document.getElementById('noteModal').style.display = 'block';
+}
+
+function closeNoteModal() {
+    document.getElementById('noteModal').style.display = 'none';
+    currentRequestId = null;
+    currentAction = null;
+}
+
+async function submitWithNote() {
+    if (!currentRequestId || !currentAction) return;
+    
+    const note = document.getElementById('noteText').value.trim();
+    await handleLeaveAction(currentRequestId, currentAction, note);
+    closeNoteModal();
+}
+
+async function handleLeaveAction(requestId, action, note = '') {
+    try {
+        const response = await fetch('../api/update_leave_request.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                request_id: requestId,
+                action: action,
+                admin_id: getAdminId(),
+                note: note
+            })
+        });
+
+        const data = await response.json();
+        
+        if (!data.status) {
+            throw new Error(data.message || `Failed to ${action} leave request`);
+        }
+
+        // Show success message
+        const successMessage = document.createElement('div');
+        successMessage.className = 'alert alert-success';
+        successMessage.style.position = 'fixed';
+        successMessage.style.top = '20px';
+        successMessage.style.right = '20px';
+        successMessage.style.padding = '10px 20px';
+        successMessage.style.borderRadius = '4px';
+        successMessage.style.backgroundColor = '#d4edda';
+        successMessage.style.color = '#155724';
+        successMessage.style.zIndex = '1000';
+        successMessage.innerHTML = `<i class="fas fa-check-circle"></i> Leave request ${action}ed successfully!`;
+        document.body.appendChild(successMessage);
+
+        // Remove the message after 3 seconds
+        setTimeout(() => {
+            successMessage.remove();
+        }, 3000);
+
+        loadLeaveRequests();
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Failed to ${action} leave request: ${error.message}`);
+    }
+}
+
+function getAdminId() {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+        const user = JSON.parse(userData);
+        return user.employee_id;
+    }
+    return null;
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+    const modal = document.getElementById('noteModal');
+    if (event.target === modal) {
+        closeNoteModal();
+    }
+}
+</script>

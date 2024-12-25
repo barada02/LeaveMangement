@@ -1,0 +1,129 @@
+<div class="leave-request-container">
+    <h2>Apply for Leave</h2>
+    <form id="leaveRequestForm" class="leave-form">
+        <div class="form-group">
+            <label for="leaveType">Leave Type</label>
+            <select id="leaveType" name="leaveType" required>
+                <option value="">Select Leave Type</option>
+                <option value="sick">Sick Leave</option>
+                <option value="casual">Casual Leave</option>
+                <option value="earned">Earned Leave</option>
+                <option value="festival">Festival Leave</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input type="date" id="startDate" name="startDate" required min="">
+        </div>
+        
+        <div class="form-group">
+            <label for="endDate">End Date</label>
+            <input type="date" id="endDate" name="endDate" required min="">
+        </div>
+        
+        <div class="form-group">
+            <label for="reason">Reason</label>
+            <textarea id="reason" name="reason" rows="4" required 
+                      placeholder="Please provide a detailed reason for your leave request..."></textarea>
+        </div>
+        
+        <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane"></i> Submit Request
+        </button>
+    </form>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Set minimum date to today for date inputs
+    const today = new Date().toISOString().split('T')[0];
+    $('#startDate, #endDate').attr('min', today);
+    
+    // Show toast notification
+    function showToast(message, type = 'success') {
+        // Remove existing toast if any
+        $('.toast').remove();
+        
+        const icon = type === 'success' ? 'check-circle' : 'exclamation-circle';
+        const toast = $(`
+            <div class="toast ${type}">
+                <i class="fas fa-${icon}"></i>
+                ${message}
+            </div>
+        `);
+        
+        $('body').append(toast);
+        
+        // Remove toast after 3 seconds
+        setTimeout(() => {
+            toast.css('animation', 'fadeOut 0.3s ease-out forwards');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+    
+    // Validate dates
+    function validateDates() {
+        const startDate = new Date($('#startDate').val());
+        const endDate = new Date($('#endDate').val());
+        
+        if (endDate < startDate) {
+            showToast('End date cannot be earlier than start date', 'error');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    // Handle form submission
+    $('#leaveRequestForm').on('submit', function(e) {
+        e.preventDefault();
+        
+        if (!validateDates()) {
+            return;
+        }
+        
+        const formData = {
+            leaveType: $('#leaveType').val(),
+            startDate: $('#startDate').val(),
+            endDate: $('#endDate').val(),
+            reason: $('#reason').val(),
+            employeeId: JSON.parse(localStorage.getItem('user')).employee_id
+        };
+        
+        // Disable submit button and show loading state
+        const submitBtn = $(this).find('button[type="submit"]');
+        const originalText = submitBtn.html();
+        submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Submitting...');
+        
+        $.ajax({
+            url: '../api/leave.php',
+            type: 'POST',
+            data: { action: 'apply', ...formData },
+            success: function(response) {
+                if (response.status === 'success') {
+                    showToast('Leave request submitted successfully!');
+                    $('#leaveRequestForm')[0].reset();
+                } else {
+                    showToast(response.message || 'Failed to submit leave request', 'error');
+                }
+            },
+            error: function(xhr, status, error) {
+                showToast('Error submitting leave request: ' + error, 'error');
+            },
+            complete: function() {
+                // Restore submit button state
+                submitBtn.prop('disabled', false).html(originalText);
+            }
+        });
+    });
+    
+    // Update end date min value when start date changes
+    $('#startDate').on('change', function() {
+        $('#endDate').attr('min', $(this).val());
+        if ($('#endDate').val() && new Date($('#endDate').val()) < new Date($(this).val())) {
+            $('#endDate').val($(this).val());
+        }
+    });
+});
+</script>

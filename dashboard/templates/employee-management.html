@@ -1,0 +1,398 @@
+<!-- Employee Management Section -->
+<div class="employee-management">
+    <div class="section-header">
+        <h2>Employee Management</h2>
+        <button class="add-employee-btn" onclick="openAddEmployeeModal()">
+            <i class="fas fa-plus"></i> Add New Employee
+        </button>
+    </div>
+
+    <!-- Employee List Table -->
+    <div class="employee-list">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Date Joined</th>
+                        <th>Status</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody id="employeeTableBody">
+                    <tr>
+                        <td colspan="7" class="text-center">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add Employee Modal -->
+    <div id="addEmployeeModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAddEmployeeModal()">&times;</span>
+            <h3>Add New Employee</h3>
+            <form id="addEmployeeForm" onsubmit="handleAddEmployee(event)">
+                <div class="form-group">
+                    <label for="name">Full Name*</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" name="department">
+                        <option value="">Select Department</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Operations">Operations</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dateJoined">Date Joined*</label>
+                    <input type="date" id="dateJoined" name="dateJoined" required>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username*</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password*</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="petname">Pet Name (Security Question)*</label>
+                    <input type="text" id="petname" name="petname" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Role*</label>
+                    <select id="role" name="role" required>
+                        <option value="employee">Employee</option>
+                        <option value="manager">Manager</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Add Employee</button>
+                    <button type="button" class="cancel-btn" onclick="closeAddEmployeeModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.employee-management {
+    padding: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-employee-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-employee-btn:hover {
+    background-color: #45a049;
+}
+
+.employee-list {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.submit-btn, .cancel-btn {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.submit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spinner-border .75s linear infinite;
+}
+
+@keyframes spinner-border {
+    to { transform: rotate(360deg); }
+}
+
+.badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.bg-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.bg-danger {
+    background-color: #dc3545;
+    color: white;
+}
+</style>
+
+<script>
+// Initialize when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing employee management...');
+    loadEmployees();
+    
+});
+
+async function loadEmployees() {
+    console.log('Loading employees...');
+    try {
+        const response = await fetch('../api/get_employees.php');
+        const responseText = await response.text();
+        console.log('Raw employees response:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            console.log('Invalid JSON:', responseText);
+            throw new Error('Server returned invalid JSON');
+        }
+
+        const tbody = document.getElementById('employeeTableBody');
+        
+        if (!data.status) {
+            throw new Error(data.message || 'Failed to load employees');
+        }
+
+        const employees = Array.isArray(data.data.employees) ? data.data.employees : [];
+        
+        if (employees.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center">
+                        No employees found. Add your first employee!
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        tbody.innerHTML = '';
+        employees.forEach(employee => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${employee.employee_id}</td>
+                <td>${employee.name}</td>
+                <td>${employee.email}</td>
+                <td>${employee.department}</td>
+                <td>${employee.date_joined}</td>
+                <td>
+                    <span class="badge ${employee.status === 'active' ? 'bg-success' : 'bg-danger'}">
+                        ${employee.status}
+                    </span>
+                </td>
+                <td>${employee.role}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Error loading employees:', error);
+        const tbody = document.getElementById('employeeTableBody');
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="7" class="text-center text-danger">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Failed to load employees: ${error.message}
+                </td>
+            </tr>
+        `;
+    }
+}
+
+async function handleAddEmployee(event) {
+    event.preventDefault();
+    
+    try {
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            department: document.getElementById('department').value,
+            date_joined: document.getElementById('dateJoined').value,
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value,
+            petname: document.getElementById('petname').value,
+            role: document.getElementById('role').value
+        };
+
+        console.log('Sending data:', formData);
+
+        const response = await fetch('../api/add_employee.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
+
+        const responseText = await response.text();
+        console.log('Raw response:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (e) {
+            console.error('Failed to parse JSON:', e);
+            console.log('Invalid JSON:', responseText);
+            throw new Error('Server returned invalid JSON');
+        }
+
+        if (response.ok && data.status) {
+            alert('Employee added successfully!');
+            closeAddEmployeeModal();
+            await loadEmployees(); // Refresh the employee list
+        } else {
+            throw new Error(data.message || 'Failed to add employee');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Failed to add employee: ' + error.message);
+    }
+}
+
+function openAddEmployeeModal() {
+    document.getElementById('addEmployeeModal').style.display = 'block';
+    document.getElementById('addEmployeeForm').reset();
+}
+
+function closeAddEmployeeModal() {
+    document.getElementById('addEmployeeModal').style.display = 'none';
+}
+</script>

@@ -1,0 +1,7 @@
+[25-Dec-2024 09:24:57 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'leavesystem' in C:\xampp\htdocs\leaveSystem\api\db_connect.php on line 8
+[25-Dec-2024 09:24:57 Europe/Berlin] Connection failed: Unknown database 'leavesystem'
+[25-Dec-2024 09:25:36 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'leavesystem' in C:\xampp\htdocs\leaveSystem\api\db_connect.php on line 8
+[25-Dec-2024 09:25:36 Europe/Berlin] Connection failed: Unknown database 'leavesystem'
+[25-Dec-2024 09:30:11 Europe/Berlin] PHP Fatal error:  Cannot redeclare sendJsonResponse() (previously declared in C:\xampp\htdocs\leaveSystem\api\add_employee.php:11) in C:\xampp\htdocs\leaveSystem\config\config.php on line 49
+[25-Dec-2024 09:32:04 Europe/Berlin] PHP Fatal error:  Cannot redeclare sendJsonResponse() (previously declared in C:\xampp\htdocs\leaveSystem\api\add_employee.php:12) in C:\xampp\htdocs\leaveSystem\config\config.php on line 49
+[25-Dec-2024 09:32:36 Europe/Berlin] PHP Fatal error:  Cannot redeclare sendJsonResponse() (previously declared in C:\xampp\htdocs\leaveSystem\api\add_employee.php:12) in C:\xampp\htdocs\leaveSystem\config\config.php on line 49

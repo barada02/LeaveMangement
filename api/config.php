@@ -10,6 +10,13 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'leave_ms');
 
+// Default leave values
+define('DEFAULT_SICK_LEAVE', 12);
+define('DEFAULT_CASUAL_LEAVE', 12);
+define('DEFAULT_EARNED_LEAVE', 15);
+define('DEFAULT_FESTIVAL_LEAVE', 2);
+define('DEFAULT_TOTAL_LEAVE', 41);
+
 // Create database connection
 function getDBConnection() {
     try {

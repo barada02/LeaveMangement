@@ -8,14 +8,7 @@ ini_set('error_log', __DIR__ . '/php_error.log');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'leavems');
-
-// Default leave values
-define('DEFAULT_SICK_LEAVE', 12);
-define('DEFAULT_CASUAL_LEAVE', 12);
-define('DEFAULT_EARNED_LEAVE', 15);
-define('DEFAULT_FESTIVAL_LEAVE', 2);
-define('DEFAULT_TOTAL_LEAVE', 41); // Sum of all leave types
+define('DB_NAME', 'leave_ms');
 
 // Create database connection
 function getDBConnection() {

@@ -99,7 +99,7 @@
             <span id="alertMessage"></span>
         </div>
 
-        <form id="employeeRegistrationForm" onsubmit="return registerEmployee(event)">
+        <form id="employeeRegistrationForm" method="POST">
             <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" required>
@@ -148,55 +148,54 @@
             }, 5000);
         }
 
-        function registerEmployee(event) {
-            event.preventDefault();
+        const form = document.getElementById('employeeRegistrationForm');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
             
-            const formData = new FormData(event.target);
-            const employeeData = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                department: formData.get('department'),
-                dateJoined: formData.get('dateJoined')
+            // Get form data
+            const formData = {
+                name: form.querySelector('#name').value,
+                email: form.querySelector('#email').value,
+                department: form.querySelector('#department').value,
+                dateJoined: form.querySelector('#dateJoined').value
             };
 
             // Disable submit button while processing
-            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const submitBtn = form.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
             submitBtn.textContent = 'Registering...';
 
-            // Send data to backend
-            fetch('../api/register_employee.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(employeeData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            try {
+                // Send data to backend
+                const response = await fetch('/leavems/LeaveMangement/api/register_employee.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                const data = await response.json();
+                
+                if (data.status) {
                     showAlert(data.message);
-                    event.target.reset();
+                    form.reset();
                 } else {
                     showAlert(data.message, true);
                 }
-            })
-            .catch(error => {
+            } catch (error) {
                 console.error('Error:', error);
                 showAlert('An unexpected error occurred. Please try again later.', true);
-            })
-            .finally(() => {
+            } finally {
                 // Re-enable submit button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Register Employee';
-            });
-
-            return false;
-        }
+            }
+        });
 
         // Clear form when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('employeeRegistrationForm').reset();
+            form.reset();
         });
     </script>
 </body>

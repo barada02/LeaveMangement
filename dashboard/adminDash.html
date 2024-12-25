@@ -6,6 +6,7 @@
     <title>Admin Dashboard - Leave Management System</title>
     <link rel="stylesheet" href="dashStyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -80,7 +81,6 @@
         </main>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         // Check authentication
         function checkAuth() {
@@ -129,7 +129,7 @@
         });
 
         // Dynamic content loading using AJAX
-        function loadContent(page, event = null) {
+        function loadContent(page) {
             const mainContent = document.querySelector('.dashboard-content');
             
             // Show loading state
@@ -141,18 +141,21 @@
                 method: 'GET',
                 success: function(response) {
                     mainContent.innerHTML = response;
+                    
+                    // Update active state in sidebar
+                    document.querySelectorAll('.sidebar-nav li').forEach(li => {
+                        li.classList.remove('active');
+                        const link = li.querySelector('a');
+                        if (link && link.getAttribute('onclick').includes(page)) {
+                            li.classList.add('active');
+                        }
+                    });
                 },
                 error: function(xhr, status, error) {
                     mainContent.innerHTML = '<div class="error">Error loading content. Please try again.</div>';
                     console.error('Error:', error);
                 }
             });
-                
-            // Update active state in sidebar only if event is provided
-            if (event) {
-                document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
-                event.currentTarget.parentElement.classList.add('active');
-            }
         }
 
         // Add some basic styles

@@ -128,31 +128,46 @@
             document.querySelector('.dashboard-container').classList.toggle('sidebar-collapsed');
         });
 
-        // Dynamic content loading using AJAX
+        // Dynamic content loading
         function loadContent(page, event = null) {
-            const mainContent = document.querySelector('.dashboard-content');
-            
-            // Show loading state
-            mainContent.innerHTML = '<div class="loading">Loading...</div>';
-            
-            // Load the content using AJAX
-            $.ajax({
-                url: `templates/${page}.html`,
-                method: 'GET',
-                success: function(response) {
-                    mainContent.innerHTML = response;
-                },
-                error: function(xhr, status, error) {
-                    mainContent.innerHTML = '<div class="error">Error loading content. Please try again.</div>';
-                    console.error('Error:', error);
-                }
-            });
-                
-            // Update active state in sidebar only if event is provided
             if (event) {
-                document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
-                event.currentTarget.parentElement.classList.add('active');
+                event.preventDefault();
             }
+
+            // Remove active class from all links
+            $('.sidebar-nav li').removeClass('active');
+            // Add active class to clicked link
+            $(`a[onclick="loadContent('${page}')"]`).parent().addClass('active');
+
+            const contentDiv = $('.dashboard-content');
+            contentDiv.html('<div class="loading">Loading...</div>');
+
+            // Map pages to their template files
+            const templateMap = {
+                'home': 'admin-home.html',
+                'employee': 'employee-management.html',
+                'leaveMS': 'leave-management.html'
+            };
+
+            // Get the correct template file
+            const templateFile = templateMap[page] || `${page}.html`;
+
+            // Load content based on page
+            $.get(`templates/${templateFile}`)
+                .done(function(response) {
+                    contentDiv.html(response);
+                    // Initialize page-specific functionality
+                    if (page === 'employee') {
+                        // If employee management page is loaded, initialize it
+                        if (typeof loadEmployees === 'function') {
+                            loadEmployees();
+                        }
+                    }
+                })
+                .fail(function(error) {
+                    contentDiv.html('<div class="error">Error loading content</div>');
+                    console.error('Error loading content:', error);
+                });
         }
 
         // Add some basic styles

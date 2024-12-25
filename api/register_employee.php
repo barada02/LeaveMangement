@@ -1,21 +1,42 @@
 <?php
-header('Content-Type: application/json');
-require_once 'db_connect.php';
+// Turn off error reporting for the API endpoint
+error_reporting(0);
+ini_set('display_errors', 0);
 
-// Get JSON input
-$data = json_decode(file_get_contents('php://input'), true);
+require_once 'config.php';
+require_once 'session.php';
 
-// Validate input
-if (!isset($data['name']) || !isset($data['email']) || !isset($data['department']) || !isset($data['dateJoined'])) {
-    http_response_code(400);
-    echo json_encode([
-        'success' => false, 
-        'message' => 'Missing required fields. Please fill all the required information.'
-    ]);
+// Helper function to send JSON response
+function sendJsonResponse($status, $message, $data = null) {
+    // Clear any output buffers
+    while (ob_get_level()) {
+        ob_end_clean();
+    }
+    
+    header('Content-Type: application/json');
+    header('Cache-Control: no-cache, must-revalidate');
+    
+    $response = [
+        'status' => $status,
+        'message' => $message,
+        'data' => $data
+    ];
+    
+    echo json_encode($response);
     exit;
 }
 
 try {
+    // Get JSON input
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    // Validate input
+    if (!isset($data['name']) || !isset($data['email']) || !isset($data['department']) || !isset($data['dateJoined'])) {
+        sendJsonResponse(false, 'Missing required fields. Please fill all the required information.', null);
+    }
+
+    $conn = getDBConnection();
+
     // Check if email already exists
     $stmt = $conn->prepare("SELECT email FROM employee_details WHERE email = ?");
     $stmt->bind_param("s", $data['email']);
@@ -23,12 +44,7 @@ try {
     $result = $stmt->get_result();
     
     if ($result->num_rows > 0) {
-        http_response_code(400);
-        echo json_encode([
-            'success' => false,
-            'message' => 'Email already exists. Please use a different email address.'
-        ]);
-        exit;
+        sendJsonResponse(false, 'Email already exists. Please use a different email address.', null);
     }
 
     // Insert into employee_details
@@ -36,21 +52,13 @@ try {
     $stmt->bind_param("ssss", $data['name'], $data['email'], $data['department'], $data['dateJoined']);
     
     if ($stmt->execute()) {
-        echo json_encode([
-            'success' => true, 
-            'message' => 'Employee registered successfully!'
-        ]);
+        sendJsonResponse(true, 'Employee registered successfully', null);
     } else {
-        throw new Exception("Error inserting employee data");
+        sendJsonResponse(false, 'Failed to register employee: ' . $stmt->error, null);
     }
 
+    $conn->close();
 } catch (Exception $e) {
-    http_response_code(500);
-    echo json_encode([
-        'success' => false, 
-        'message' => 'Database error occurred. Please try again later.'
-    ]);
+    sendJsonResponse(false, 'Error: ' . $e->getMessage(), null);
 }
-
-$conn->close();
 ?>

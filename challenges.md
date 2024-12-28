@@ -91,6 +91,40 @@
 - Implemented debugging tools and utilities
 - Added response logging for troubleshooting
 
+## Recent Development Challenges (December 2024)
+
+### 1. Leave Balance Initialization Issue
+**Challenge:** Leave balance was not being created for newly registered employees, causing errors in leave management operations.
+**Solution:**
+- Added leave balance initialization within the employee registration transaction
+- Created variables for bind_param to handle constant values
+- Implemented proper error handling for leave balance creation
+- Added detailed logging for debugging
+
+### 2. Database Parameter Binding Issue
+**Challenge:** Error with mysqli_stmt::bind_param when trying to use constants directly.
+**Solution:**
+- Created intermediate variables to store constant values
+- Modified the bind_param implementation to use variables instead of constants
+- Enhanced error logging for better debugging
+- Maintained transaction integrity throughout the process
+
+### 3. API Response Structure Enhancement
+**Challenge:** Need for separate notifications for employee registration and leave balance initialization.
+**Solution:**
+- Restructured API response to include separate status sections
+- Added detailed leave balance information in the response
+- Improved error handling and status reporting
+- Included leave details (sick, casual, earned, festival) in response
+
+### 4. Navigation Enhancement
+**Challenge:** Users were unable to navigate back to the home page from the login page.
+**Solution:**
+- Added navigation functionality to the company logo
+- Implemented proper linking to index.php
+- Added hover effects for better user experience
+- Maintained consistent styling with the existing design
+
 ## Best Practices Implemented
 
 1. **Error Handling:**

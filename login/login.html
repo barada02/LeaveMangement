@@ -11,7 +11,9 @@
     <div class="container">
         <div class="login-container">
             <div class="company-logo">
-                <i class="fas fa-building"></i>
+                <a href="../index.php" title="Go to Home">
+                    <i class="fas fa-building"></i>
+                </a>
             </div>
             <div class="form-container">
                 <h1>Login</h1>
@@ -94,7 +96,7 @@
                         if (response.status === 'success') {
                             // Store user data in localStorage
                             localStorage.setItem('user', JSON.stringify(response.data));
-                            
+                             
                             // Redirect based on user role
                             const userRole = response.data.role;
                             if (userRole === 'admin') {

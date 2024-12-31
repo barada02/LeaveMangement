@@ -100,22 +100,17 @@ nav {
 }
 
 .login-btn {
-    color: #3498db;
-    border: 1px solid #3498db;
-}
-
-.register-btn {
     background: #3498db;
     color: white;
 }
 
-.login-btn:hover {
-    background: rgba(52, 152, 219, 0.1);
-}
 
-.register-btn:hover {
+
+.login-btn:hover {
     background: #2980b9;
 }
+
+
 
 /* Hero Section */
 #hero {

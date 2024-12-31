@@ -584,75 +584,314 @@ Stack trace:
 [25-Dec-2024 15:55:05 Europe/Berlin] Attempting to connect to database...
 [25-Dec-2024 15:55:05 Europe/Berlin] Database connection successful
 [25-Dec-2024 15:55:05 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[{"leave_log_id":17,"employee_id":8,"leave_type":"earned","start_date":"2025-01-02","end_date":"2025-01-03","reason":"Family time","status":"approved","manager_id":1,"date_applied":"2024-12-25 20:24:12","date_updated":"2024-12-25 20:24:45","note":"Enjoy"},{"leave_log_id":16,"employee_id":8,"leave_type":"earned","start_date":"2024-12-26","end_date":"2024-12-30","reason":"good performed","status":"approved","manager_id":1,"date_applied":"2024-12-25 18:51:20","date_updated":"2024-12-25 18:52:31","note":"Done enjoy"},{"leave_log_id":5,"employee_id":8,"leave_type":"sick","start_date":"2024-06-01","end_date":"2024-06-02","reason":"Migraine issue","status":"rejected","manager_id":2,"date_applied":"2024-12-20 13:31:46","date_updated":"2024-12-20 13:31:46","note":"Insufficient leave balance"}]}
-[25-Dec-2024 16:24:16 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:24:16 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'leave_ms' in C:\xampp\htdocs\leavems\LeaveMangement\api\config.php on line 24
-[25-Dec-2024 16:24:16 Europe/Berlin] Database connection failed: Unknown database 'leave_ms'
-[25-Dec-2024 16:24:16 Europe/Berlin] Database error: Database connection failed: Unknown database 'leave_ms'
-[25-Dec-2024 16:24:16 Europe/Berlin] Sending response: {"status":false,"message":"Database connection error: Database connection failed: Unknown database 'leave_ms'","data":null}
-[25-Dec-2024 16:26:40 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:40 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:40 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:40 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:40 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:40 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:40 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":null}
-[25-Dec-2024 16:26:40 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
-[25-Dec-2024 16:26:43 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:43 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:45 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:45 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:45 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":null}
-[25-Dec-2024 16:26:45 Europe/Berlin] Attempting to connect to database...
-[25-Dec-2024 16:26:45 Europe/Berlin] Database connection successful
-[25-Dec-2024 16:26:45 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[]}
-[26-Dec-2024 14:32:47 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 14:32:47 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:39:34 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:39:34 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:39:38 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:39:38 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:39:38 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
-[26-Dec-2024 15:39:39 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:39:39 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:39:39 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
-[26-Dec-2024 15:39:40 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:39:40 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:39:40 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
-[26-Dec-2024 15:40:23 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:40:23 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:40:23 Europe/Berlin] Get leave requests response: {"requests":[{"leave_log_id":"2","employee_id":"5","employee_name":"Anaya Iyer","leave_type":"Casual Leave","from_date":"2024-06-10","to_date":"2024-06-11","days":"2","reason":"Family event","status":"Rejected","date_applied":"2024-12-20 13:31:46","note":"Rejected by admin"},{"leave_log_id":"5","employee_id":"8","employee_name":"Vikram Singh","leave_type":"Sick Leave","from_date":"2024-06-01","to_date":"2024-06-02","days":"2","reason":"Migraine issue","status":"Rejected","date_applied":"2024-12-20 13:31:46","note":"Insufficient leave balance"},{"leave_log_id":"13","employee_id":"4","employee_name":"Aarav Sharma","leave_type":"Casual Leave","from_date":"2024-06-18","to_date":"2024-06-19","days":"2","reason":"Attending marriage ceremony","status":"Rejected","date_applied":"2024-12-20 13:31:46","note":"Leave quota exceeded"}]}
-[26-Dec-2024 15:40:24 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:40:24 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:40:24 Europe/Berlin] Get leave requests response: {"requests":[{"leave_log_id":"17","employee_id":"8","employee_name":"Vikram Singh","leave_type":"Earned Leave","from_date":"2025-01-02","to_date":"2025-01-03","days":"2","reason":"Family time","status":"Approved","date_applied":"2024-12-25 20:24:12","note":"Enjoy"},{"leave_log_id":"16","employee_id":"8","employee_name":"Vikram Singh","leave_type":"Earned Leave","from_date":"2024-12-26","to_date":"2024-12-30","days":"5","reason":"good performed","status":"Approved","date_applied":"2024-12-25 18:51:20","note":"Done enjoy"},{"leave_log_id":"15","employee_id":"13","employee_name":"Kavya Menon","leave_type":"Sick Leave","from_date":"2024-12-23","to_date":"2024-12-25","days":"3","reason":"Getting sessional Fever.","status":"Approved","date_applied":"2024-12-22 18:40:03","note":"Approved by admin"},{"leave_log_id":"1","employee_id":"4","employee_name":"Aarav Sharma","leave_type":"Sick Leave","from_date":"2024-06-01","to_date":"2024-06-03","days":"3","reason":"Fever and cold","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by Chandan"},{"leave_log_id":"3","employee_id":"6","employee_name":"Rohan Patel","leave_type":"Earned Leave","from_date":"2024-06-15","to_date":"2024-06-20","days":"6","reason":"Vacation trip","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy your holidays!"},{"leave_log_id":"4","employee_id":"7","employee_name":"Meena Nair","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival leave for Diwali","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by admin"},{"leave_log_id":"6","employee_id":"9","employee_name":"Priya Desai","leave_type":"Casual Leave","from_date":"2024-06-05","to_date":"2024-06-06","days":"2","reason":"Personal work","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved"},{"leave_log_id":"7","employee_id":"10","employee_name":"Rajesh Gupta","leave_type":"Earned Leave","from_date":"2024-07-01","to_date":"2024-07-07","days":"7","reason":"Family vacation","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by admin"},{"leave_log_id":"8","employee_id":"11","employee_name":"Sneha Reddy","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival holiday","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy the festival!"},{"leave_log_id":"9","employee_id":"12","employee_name":"Amit Trivedi","leave_type":"Sick Leave","from_date":"2024-06-15","to_date":"2024-06-17","days":"3","reason":"Health check-up","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Take Care"},{"leave_log_id":"10","employee_id":"13","employee_name":"Kavya Menon","leave_type":"Casual Leave","from_date":"2024-06-20","to_date":"2024-06-21","days":"2","reason":"Trip with friends","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved"},{"leave_log_id":"11","employee_id":"14","employee_name":"Nikhil Sharma","leave_type":"Earned Leave","from_date":"2024-07-10","to_date":"2024-07-15","days":"6","reason":"Summer vacation","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved for vacation"},{"leave_log_id":"12","employee_id":"15","employee_name":"Pooja Verma","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival leave","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy your time!"},{"leave_log_id":"14","employee_id":"6","employee_name":"Rohan Patel","leave_type":"Sick Leave","from_date":"2024-06-22","to_date":"2024-06-24","days":"3","reason":"Health issues","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Take care!"}]}
-[26-Dec-2024 15:41:05 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:05 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:05 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:05 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:05 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:05 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:05 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":13,"employee_id":13,"sick_leave":4,"casual_leave":7,"earned_leave":12,"festival_leave":4,"total_leave":30,"total_leave_left":27}}
-[26-Dec-2024 15:41:05 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
-[26-Dec-2024 15:41:10 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:10 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:10 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[{"leave_log_id":15,"employee_id":13,"leave_type":"sick","start_date":"2024-12-23","end_date":"2024-12-25","reason":"Getting sessional Fever.","status":"approved","manager_id":1,"date_applied":"2024-12-22 18:40:03","date_updated":"2024-12-25 17:39:29","note":"Approved by admin"},{"leave_log_id":10,"employee_id":13,"leave_type":"casual","start_date":"2024-06-20","end_date":"2024-06-21","reason":"Trip with friends","status":"approved","manager_id":1,"date_applied":"2024-12-20 13:31:46","date_updated":"2024-12-20 13:31:46","note":"Approved"}]}
-[26-Dec-2024 15:41:12 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:12 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:12 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":13,"employee_id":13,"sick_leave":4,"casual_leave":7,"earned_leave":12,"festival_leave":4,"total_leave":30,"total_leave_left":27}}
-[26-Dec-2024 15:41:14 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:14 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:19 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:19 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:19 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:19 Europe/Berlin] Database connection successful
-[26-Dec-2024 15:41:19 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":13,"employee_id":13,"sick_leave":4,"casual_leave":7,"earned_leave":12,"festival_leave":4,"total_leave":30,"total_leave_left":27}}
-[26-Dec-2024 15:41:19 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
-[26-Dec-2024 15:41:23 Europe/Berlin] Attempting to connect to database...
-[26-Dec-2024 15:41:23 Europe/Berlin] Database connection successful
-[28-Dec-2024 05:57:14 Europe/Berlin] Attempting to connect to database...
-[28-Dec-2024 05:57:14 Europe/Berlin] Database connection successful
-[28-Dec-2024 05:57:15 Europe/Berlin] Attempting to connect to database...
-[28-Dec-2024 05:57:15 Europe/Berlin] Attempting to connect to database...
-[28-Dec-2024 05:57:15 Europe/Berlin] Database connection successful
-[28-Dec-2024 05:57:15 Europe/Berlin] Database connection successful
-[28-Dec-2024 05:57:15 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
-[28-Dec-2024 05:57:15 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":null}
+[28-Dec-2024 07:56:45 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 07:56:45 Europe/Berlin] PHP Warning:  mysqli::__construct(): (HY000/1049): Unknown database 'leave_ms' in C:\xampp\htdocs\leavems\LeaveMangement\api\config.php on line 24
+[28-Dec-2024 07:56:45 Europe/Berlin] Database connection failed: Unknown database 'leave_ms'
+[28-Dec-2024 07:56:45 Europe/Berlin] Database error: Database connection failed: Unknown database 'leave_ms'
+[28-Dec-2024 07:56:45 Europe/Berlin] Sending response: {"status":false,"message":"Database connection error: Database connection failed: Unknown database 'leave_ms'","data":null}
+[28-Dec-2024 07:58:14 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 07:58:14 Europe/Berlin] Database connection successful
+[28-Dec-2024 07:58:17 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 07:58:17 Europe/Berlin] Database connection successful
+[28-Dec-2024 07:58:17 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:00:12 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:00:12 Europe/Berlin] Received raw data: {"name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","username":"Abhi.gandu","password":"Abhi123","petname":"potti","role":"employee"}
+[28-Dec-2024 08:00:12 Europe/Berlin] Decoded data: Array
+(
+    [name] => Abhinav Gandu
+    [email] => gandu@gmail.com
+    [department] => Finance
+    [date_joined] => 2024-12-02
+    [username] => Abhi.gandu
+    [password] => Abhi123
+    [petname] => potti
+    [role] => employee
+)
+
+[28-Dec-2024 08:00:12 Europe/Berlin] All required fields present
+[28-Dec-2024 08:00:12 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:00:12 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:00:12 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:00:12 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:00:12 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:00:12 Europe/Berlin] Transaction started
+[28-Dec-2024 08:00:12 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:00:12 Europe/Berlin] Binding parameters for employee_details: name=Abhinav Gandu, email=gandu@gmail.com, department=Finance, date_joined=2024-12-02
+[28-Dec-2024 08:00:12 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:00:12 Europe/Berlin] Employee inserted with ID: 23
+[28-Dec-2024 08:00:12 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:00:12 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:00:12 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:00:12 Europe/Berlin] User credentials inserted
+[28-Dec-2024 08:00:12 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:00:12 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:00:12 Europe/Berlin] Closing database connection
+[28-Dec-2024 08:00:12 Europe/Berlin] PHP Fatal error:  Uncaught Error: mysqli_stmt::bind_param(): Argument #3 cannot be passed by reference in C:\xampp\htdocs\leavems\LeaveMangement\api\add_employee.php:135
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\leavems\LeaveMangement\api\add_employee.php on line 135
+[28-Dec-2024 08:02:54 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:02:54 Europe/Berlin] Received raw data: {"name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","username":"testuser1735369374","password":"Test@123","petname":"Buddy","role":"employee"}
+[28-Dec-2024 08:02:54 Europe/Berlin] Decoded data: Array
+(
+    [name] => Test Employee
+    [email] => test.employee1735369374@example.com
+    [department] => IT
+    [date_joined] => 2024-12-28
+    [username] => testuser1735369374
+    [password] => Test@123
+    [petname] => Buddy
+    [role] => employee
+)
+
+[28-Dec-2024 08:02:54 Europe/Berlin] All required fields present
+[28-Dec-2024 08:02:54 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:02:54 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:02:54 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:02:54 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:02:54 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:02:54 Europe/Berlin] Transaction started
+[28-Dec-2024 08:02:54 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:02:54 Europe/Berlin] Binding parameters for employee_details: name=Test Employee, email=test.employee1735369374@example.com, department=IT, date_joined=2024-12-28
+[28-Dec-2024 08:02:54 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:02:54 Europe/Berlin] Employee inserted with ID: 24
+[28-Dec-2024 08:02:54 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:02:54 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:02:54 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:02:54 Europe/Berlin] User credentials inserted
+[28-Dec-2024 08:02:54 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:02:54 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:02:54 Europe/Berlin] Executing leave_balance insert
+[28-Dec-2024 08:02:54 Europe/Berlin] Leave balance inserted
+[28-Dec-2024 08:02:54 Europe/Berlin] Committing transaction
+[28-Dec-2024 08:02:54 Europe/Berlin] Transaction committed successfully
+[28-Dec-2024 08:02:54 Europe/Berlin] Closing database connection
+[28-Dec-2024 08:03:31 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:03:31 Europe/Berlin] Received raw data: {"name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","username":"testuser1735369411","password":"Test@123","petname":"Buddy","role":"employee"}
+[28-Dec-2024 08:03:31 Europe/Berlin] Decoded data: Array
+(
+    [name] => Test Employee
+    [email] => test.employee1735369411@example.com
+    [department] => IT
+    [date_joined] => 2024-12-28
+    [username] => testuser1735369411
+    [password] => Test@123
+    [petname] => Buddy
+    [role] => employee
+)
+
+[28-Dec-2024 08:03:31 Europe/Berlin] All required fields present
+[28-Dec-2024 08:03:31 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:03:31 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:03:31 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:03:31 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:03:31 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:03:31 Europe/Berlin] Transaction started
+[28-Dec-2024 08:03:31 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:03:31 Europe/Berlin] Binding parameters for employee_details
+[28-Dec-2024 08:03:31 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:03:31 Europe/Berlin] Employee inserted with ID: 25
+[28-Dec-2024 08:03:31 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:03:31 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:03:31 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:03:31 Europe/Berlin] User credentials inserted successfully
+[28-Dec-2024 08:03:31 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:03:31 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:03:31 Europe/Berlin] Executing leave_balance insert
+[28-Dec-2024 08:03:31 Europe/Berlin] Leave balance inserted successfully
+[28-Dec-2024 08:03:31 Europe/Berlin] Transaction committed successfully
+[28-Dec-2024 08:04:04 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:04:04 Europe/Berlin] Received raw data: {"name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","username":"Abhi.gandu","password":"Abhi123","petname":"potti","role":"employee"}
+[28-Dec-2024 08:04:04 Europe/Berlin] Decoded data: Array
+(
+    [name] => Abhinav Gandu
+    [email] => gandu@gmail.com
+    [department] => Finance
+    [date_joined] => 2024-12-02
+    [username] => Abhi.gandu
+    [password] => Abhi123
+    [petname] => potti
+    [role] => employee
+)
+
+[28-Dec-2024 08:04:04 Europe/Berlin] All required fields present
+[28-Dec-2024 08:04:04 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:04:04 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:04:04 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:04:04 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:04:04 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:04:04 Europe/Berlin] Transaction started
+[28-Dec-2024 08:04:04 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:04:04 Europe/Berlin] Binding parameters for employee_details
+[28-Dec-2024 08:04:04 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:04:04 Europe/Berlin] Employee inserted with ID: 26
+[28-Dec-2024 08:04:04 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:04:04 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:04:04 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:04:04 Europe/Berlin] User credentials inserted successfully
+[28-Dec-2024 08:04:04 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:04:04 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:04:04 Europe/Berlin] Executing leave_balance insert
+[28-Dec-2024 08:04:04 Europe/Berlin] Leave balance inserted successfully
+[28-Dec-2024 08:04:04 Europe/Berlin] Transaction committed successfully
+[28-Dec-2024 08:04:08 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:04:08 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:04:08 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:04:30 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:04:30 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:04:30 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:10:16 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:10:16 Europe/Berlin] Received raw data: {"name":"Test Employee","email":"test.employee1735369816@example.com","department":"IT","date_joined":"2024-12-28","username":"testuser1735369816","password":"Test@123","petname":"Buddy","role":"employee"}
+[28-Dec-2024 08:10:16 Europe/Berlin] Decoded data: Array
+(
+    [name] => Test Employee
+    [email] => test.employee1735369816@example.com
+    [department] => IT
+    [date_joined] => 2024-12-28
+    [username] => testuser1735369816
+    [password] => Test@123
+    [petname] => Buddy
+    [role] => employee
+)
+
+[28-Dec-2024 08:10:16 Europe/Berlin] All required fields present
+[28-Dec-2024 08:10:16 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:10:16 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:10:16 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:10:16 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:10:16 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:10:16 Europe/Berlin] Transaction started
+[28-Dec-2024 08:10:16 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:10:16 Europe/Berlin] Binding parameters for employee_details
+[28-Dec-2024 08:10:16 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:10:16 Europe/Berlin] Employee inserted with ID: 27
+[28-Dec-2024 08:10:16 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:10:16 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:10:16 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:10:16 Europe/Berlin] User credentials inserted successfully
+[28-Dec-2024 08:10:16 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:10:16 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:10:16 Europe/Berlin] Executing leave_balance insert
+[28-Dec-2024 08:10:16 Europe/Berlin] Leave balance inserted successfully
+[28-Dec-2024 08:10:16 Europe/Berlin] Transaction committed successfully
+[28-Dec-2024 08:10:36 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:10:36 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:10:36 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"27","name":"Test Employee","email":"test.employee1735369816@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:15:24 Europe/Berlin] Starting add_employee.php script
+[28-Dec-2024 08:15:24 Europe/Berlin] Received raw data: {"name":"Vamshi Chunchu","email":"Chunchuvamshi@gmail.com","department":"IT","date_joined":"2024-11-06","username":"Chunchu.vamshi","password":"Vamshi123","petname":"Chiku","role":"employee"}
+[28-Dec-2024 08:15:24 Europe/Berlin] Decoded data: Array
+(
+    [name] => Vamshi Chunchu
+    [email] => Chunchuvamshi@gmail.com
+    [department] => IT
+    [date_joined] => 2024-11-06
+    [username] => Chunchu.vamshi
+    [password] => Vamshi123
+    [petname] => Chiku
+    [role] => employee
+)
+
+[28-Dec-2024 08:15:24 Europe/Berlin] All required fields present
+[28-Dec-2024 08:15:24 Europe/Berlin] Getting database connection
+[28-Dec-2024 08:15:24 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:15:24 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:15:24 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:15:24 Europe/Berlin] Starting transaction
+[28-Dec-2024 08:15:24 Europe/Berlin] Transaction started
+[28-Dec-2024 08:15:24 Europe/Berlin] Preparing employee_details insert
+[28-Dec-2024 08:15:24 Europe/Berlin] Binding parameters for employee_details
+[28-Dec-2024 08:15:24 Europe/Berlin] Executing employee_details insert
+[28-Dec-2024 08:15:24 Europe/Berlin] Employee inserted with ID: 28
+[28-Dec-2024 08:15:24 Europe/Berlin] Preparing user_credentials insert
+[28-Dec-2024 08:15:24 Europe/Berlin] Binding parameters for user_credentials
+[28-Dec-2024 08:15:24 Europe/Berlin] Executing user_credentials insert
+[28-Dec-2024 08:15:24 Europe/Berlin] User credentials inserted successfully
+[28-Dec-2024 08:15:24 Europe/Berlin] Preparing leave_balance insert
+[28-Dec-2024 08:15:24 Europe/Berlin] Binding parameters for leave_balance
+[28-Dec-2024 08:15:24 Europe/Berlin] Executing leave_balance insert
+[28-Dec-2024 08:15:24 Europe/Berlin] Leave balance inserted successfully
+[28-Dec-2024 08:15:24 Europe/Berlin] Transaction committed successfully
+[28-Dec-2024 08:15:26 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:15:26 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:15:26 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"28","name":"Vamshi Chunchu","email":"Chunchuvamshi@gmail.com","department":"IT","date_joined":"2024-11-06","status":"active","role":"employee"},{"employee_id":"27","name":"Test Employee","email":"test.employee1735369816@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:16:10 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:10 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:10 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:10 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:10 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":20,"employee_id":28,"sick_leave":12,"casual_leave":12,"earned_leave":0,"festival_leave":2,"total_leave":26,"total_leave_left":26}}
+[28-Dec-2024 08:16:10 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:10 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:10 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
+[28-Dec-2024 08:16:13 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:13 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:13 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":20,"employee_id":28,"sick_leave":12,"casual_leave":12,"earned_leave":0,"festival_leave":2,"total_leave":26,"total_leave_left":26}}
+[28-Dec-2024 08:16:15 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:15 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:17 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:17 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:17 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":20,"employee_id":28,"sick_leave":12,"casual_leave":12,"earned_leave":0,"festival_leave":2,"total_leave":26,"total_leave_left":26}}
+[28-Dec-2024 08:16:18 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:16:18 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:16:18 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[]}
+[28-Dec-2024 08:17:48 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:17:48 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:17:48 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:17:48 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:17:48 Europe/Berlin] Sending response: {"status":"success","message":"Leave application submitted successfully","data":{"days":3,"type":"casual","remaining_balance":12}}
+[28-Dec-2024 08:17:52 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:17:52 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:17:52 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[{"leave_log_id":18,"employee_id":28,"leave_type":"casual","start_date":"2025-01-02","end_date":"2025-01-04","reason":"Date with Badri.","status":"pending","manager_id":null,"date_applied":"2024-12-28 12:47:48","date_updated":"2024-12-28 12:47:48","note":null}]}
+[28-Dec-2024 08:18:18 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:18 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:20 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:20 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:20 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"28","name":"Vamshi Chunchu","email":"Chunchuvamshi@gmail.com","department":"IT","date_joined":"2024-11-06","status":"active","role":"employee"},{"employee_id":"27","name":"Test Employee","email":"test.employee1735369816@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[28-Dec-2024 08:18:24 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:24 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:24 Europe/Berlin] Get leave requests response: {"requests":[{"leave_log_id":"17","employee_id":"8","employee_name":"Vikram Singh","leave_type":"Earned Leave","from_date":"2025-01-02","to_date":"2025-01-03","days":"2","reason":"Family time","status":"Approved","date_applied":"2024-12-25 20:24:12","note":"Enjoy"},{"leave_log_id":"16","employee_id":"8","employee_name":"Vikram Singh","leave_type":"Earned Leave","from_date":"2024-12-26","to_date":"2024-12-30","days":"5","reason":"good performed","status":"Approved","date_applied":"2024-12-25 18:51:20","note":"Done enjoy"},{"leave_log_id":"15","employee_id":"13","employee_name":"Kavya Menon","leave_type":"Sick Leave","from_date":"2024-12-23","to_date":"2024-12-25","days":"3","reason":"Getting sessional Fever.","status":"Approved","date_applied":"2024-12-22 18:40:03","note":"Approved by admin"},{"leave_log_id":"1","employee_id":"4","employee_name":"Aarav Sharma","leave_type":"Sick Leave","from_date":"2024-06-01","to_date":"2024-06-03","days":"3","reason":"Fever and cold","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by Chandan"},{"leave_log_id":"3","employee_id":"6","employee_name":"Rohan Patel","leave_type":"Earned Leave","from_date":"2024-06-15","to_date":"2024-06-20","days":"6","reason":"Vacation trip","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy your holidays!"},{"leave_log_id":"4","employee_id":"7","employee_name":"Meena Nair","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival leave for Diwali","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by admin"},{"leave_log_id":"6","employee_id":"9","employee_name":"Priya Desai","leave_type":"Casual Leave","from_date":"2024-06-05","to_date":"2024-06-06","days":"2","reason":"Personal work","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved"},{"leave_log_id":"7","employee_id":"10","employee_name":"Rajesh Gupta","leave_type":"Earned Leave","from_date":"2024-07-01","to_date":"2024-07-07","days":"7","reason":"Family vacation","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved by admin"},{"leave_log_id":"8","employee_id":"11","employee_name":"Sneha Reddy","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival holiday","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy the festival!"},{"leave_log_id":"9","employee_id":"12","employee_name":"Amit Trivedi","leave_type":"Sick Leave","from_date":"2024-06-15","to_date":"2024-06-17","days":"3","reason":"Health check-up","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Take Care"},{"leave_log_id":"10","employee_id":"13","employee_name":"Kavya Menon","leave_type":"Casual Leave","from_date":"2024-06-20","to_date":"2024-06-21","days":"2","reason":"Trip with friends","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved"},{"leave_log_id":"11","employee_id":"14","employee_name":"Nikhil Sharma","leave_type":"Earned Leave","from_date":"2024-07-10","to_date":"2024-07-15","days":"6","reason":"Summer vacation","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Approved for vacation"},{"leave_log_id":"12","employee_id":"15","employee_name":"Pooja Verma","leave_type":"Festival Leave","from_date":"2024-06-23","to_date":"2024-06-23","days":"1","reason":"Festival leave","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Enjoy your time!"},{"leave_log_id":"14","employee_id":"6","employee_name":"Rohan Patel","leave_type":"Sick Leave","from_date":"2024-06-22","to_date":"2024-06-24","days":"3","reason":"Health issues","status":"Approved","date_applied":"2024-12-20 13:31:46","note":"Take care!"}]}
+[28-Dec-2024 08:18:28 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:28 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:28 Europe/Berlin] Get leave requests response: {"requests":[{"leave_log_id":"18","employee_id":"28","employee_name":"Vamshi Chunchu","leave_type":"Casual Leave","from_date":"2025-01-02","to_date":"2025-01-04","days":"3","reason":"Date with Badri.","status":"Pending","date_applied":"2024-12-28 12:47:48","note":""}]}
+[28-Dec-2024 08:18:52 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:52 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:52 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:18:52 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:18:52 Europe/Berlin] Get leave requests response: {"requests":[]}
+[28-Dec-2024 08:19:14 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:19:14 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:19:14 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:19:14 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:19:14 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:19:14 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:19:14 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":20,"employee_id":28,"sick_leave":12,"casual_leave":12,"earned_leave":0,"festival_leave":2,"total_leave":26,"total_leave_left":26}}
+[28-Dec-2024 08:19:14 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
+[28-Dec-2024 08:19:17 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:19:17 Europe/Berlin] Database connection successful
+[28-Dec-2024 08:19:17 Europe/Berlin] Sending response: {"status":"success","message":"Leave history retrieved","data":[{"leave_log_id":18,"employee_id":28,"leave_type":"casual","start_date":"2025-01-02","end_date":"2025-01-04","reason":"Date with Badri.","status":"rejected","manager_id":1,"date_applied":"2024-12-28 12:47:48","date_updated":"2024-12-28 12:48:52","note":"Be Straight"}]}
+[28-Dec-2024 08:19:26 Europe/Berlin] Attempting to connect to database...
+[28-Dec-2024 08:19:26 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:05:37 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:05:37 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:06:00 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:06:00 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:06:00 Europe/Berlin] Get employees response: {"employees":[{"employee_id":"28","name":"Vamshi Chunchu","email":"Chunchuvamshi@gmail.com","department":"IT","date_joined":"2024-11-06","status":"active","role":"employee"},{"employee_id":"27","name":"Test Employee","email":"test.employee1735369816@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"26","name":"Abhinav Gandu","email":"gandu@gmail.com","department":"Finance","date_joined":"2024-12-02","status":"active","role":"employee"},{"employee_id":"25","name":"Test Employee","email":"test.employee1735369411@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"24","name":"Test Employee","email":"test.employee1735369374@example.com","department":"IT","date_joined":"2024-12-28","status":"active","role":"employee"},{"employee_id":"22","name":"Badrinath","email":"Badri@123gmail.com","department":"Finance","date_joined":"2024-12-20","status":"active","role":"employee"},{"employee_id":"21","name":"Mahesh Mc","email":"mahesh@gmail.com","department":"IT","date_joined":"2024-08-06","status":"active","role":"employee"},{"employee_id":"20","name":"Dinesh kumar","email":"Dinesh@gmail.com","department":"-","date_joined":"2024-08-08","status":"active","role":"employee"},{"employee_id":"19","name":"Test Employee","email":"test.employee1735124084@example.com","department":"IT","date_joined":"2024-12-25","status":"active","role":"employee"},{"employee_id":"15","name":"Pooja Verma","email":"pooja.verma@example.com","department":"Support","date_joined":"2024-12-01","status":"active","role":"employee"},{"employee_id":"14","name":"Nikhil Sharma","email":"nikhil.sharma@example.com","department":"Sales","date_joined":"2024-11-20","status":"active","role":"employee"},{"employee_id":"13","name":"Kavya Menon","email":"kavya.menon@example.com","department":"Finance","date_joined":"2024-11-05","status":"active","role":"employee"},{"employee_id":"12","name":"Amit Trivedi","email":"amit.trivedi@example.com","department":"Operations","date_joined":"2024-10-15","status":"active","role":"employee"},{"employee_id":"11","name":"Sneha Reddy","email":"sneha.reddy@example.com","department":"HR","date_joined":"2024-09-12","status":"active","role":"employee"},{"employee_id":"10","name":"Rajesh Gupta","email":"rajesh.gupta@example.com","department":"IT","date_joined":"2024-08-10","status":"active","role":"employee"},{"employee_id":"9","name":"Priya Desai","email":"priya.desai@example.com","department":"Support","date_joined":"2024-07-01","status":"active","role":"employee"},{"employee_id":"8","name":"Vikram Singh","email":"vikram.singh@example.com","department":"Marketing","date_joined":"2024-06-01","status":"active","role":"employee"},{"employee_id":"7","name":"Meena Nair","email":"meena.nair@example.com","department":"Sales","date_joined":"2024-05-20","status":"active","role":"employee"},{"employee_id":"6","name":"Rohan Patel","email":"rohan.patel@example.com","department":"IT","date_joined":"2024-04-01","status":"active","role":"employee"},{"employee_id":"5","name":"Anaya Iyer","email":"anaya.iyer@example.com","department":"Finance","date_joined":"2024-03-10","status":"active","role":"employee"},{"employee_id":"4","name":"Aarav Sharma","email":"aarav.sharma@example.com","department":"HR","date_joined":"2024-02-15","status":"active","role":"employee"},{"employee_id":"3","name":"H. Srikant","email":"h.srikant@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"2","name":"D. Sairam","email":"d.sairam@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"},{"employee_id":"1","name":"Chandan Kumar","email":"chandan.kumar@example.com","department":"Admin","date_joined":"2024-01-01","status":"active","role":"admin"}]}
+[31-Dec-2024 09:06:29 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:06:29 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:06:29 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:06:29 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:06:29 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:06:29 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:06:29 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":null}
+[31-Dec-2024 09:06:29 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
+[31-Dec-2024 09:06:52 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:06:52 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:07:19 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:07:19 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:07:20 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:07:20 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:07:20 Europe/Berlin] Sending response: {"status":"success","message":"Leave balance retrieved","data":{"balance_id":13,"employee_id":13,"sick_leave":4,"casual_leave":7,"earned_leave":12,"festival_leave":4,"total_leave":30,"total_leave_left":27}}
+[31-Dec-2024 09:07:20 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:07:20 Europe/Berlin] Database connection successful
+[31-Dec-2024 09:07:20 Europe/Berlin] Sending response: {"status":"success","message":"Pending request count retrieved","data":0}
+[31-Dec-2024 09:07:34 Europe/Berlin] Attempting to connect to database...
+[31-Dec-2024 09:07:34 Europe/Berlin] Database connection successful

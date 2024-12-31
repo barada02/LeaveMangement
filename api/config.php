@@ -13,7 +13,7 @@ define('DB_NAME', 'leavems');
 // Default leave values
 define('DEFAULT_SICK_LEAVE', 12);
 define('DEFAULT_CASUAL_LEAVE', 12);
-define('DEFAULT_EARNED_LEAVE', 15);
+define('DEFAULT_EARNED_LEAVE', 0);
 define('DEFAULT_FESTIVAL_LEAVE', 2);
 define('DEFAULT_TOTAL_LEAVE', 41); // Sum of all leave types
 

@@ -64,9 +64,20 @@ body::after {
     margin-bottom: 30px;
 }
 
+.company-logo a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.company-logo a:hover {
+    transform: scale(1.1);
+}
+
 .company-logo i {
-    font-size: 48px;
-    color: #fff;
+    font-size: 2.5em;
+    color: #ffffff;
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 50%;

@@ -1,6 +1,11 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+// Enable error reporting
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 error_log("Starting add_employee.php script");
 
 try {
@@ -55,12 +60,7 @@ try {
         
         $department = empty($data['department']) ? null : $data['department'];
         
-        error_log("Binding parameters for employee_details: " . 
-                 "name={$data['name']}, " .
-                 "email={$data['email']}, " .
-                 "department=$department, " .
-                 "date_joined={$data['date_joined']}");
-                 
+        error_log("Binding parameters for employee_details");
         if (!$stmt->bind_param("ssss", 
             $data['name'],
             $data['email'],
@@ -107,34 +107,94 @@ try {
         if (!$stmt->execute()) {
             throw new Exception('User credentials insert failed: ' . $stmt->error);
         }
-        error_log("User credentials inserted");
+        error_log("User credentials inserted successfully");
+
+        // Insert into leave_balance with default values from config
+        error_log("Preparing leave_balance insert");
+        $stmt = $conn->prepare("
+            INSERT INTO leave_balance (
+                employee_id, 
+                sick_leave, 
+                casual_leave, 
+                earned_leave, 
+                festival_leave, 
+                total_leave,
+                total_leave_left
+            ) VALUES (?, ?, ?, ?, ?, ?, ?)
+        ");
+        
+        if (!$stmt) {
+            throw new Exception('Prepare failed for leave_balance: ' . $conn->error);
+        }
+        
+        $total_leave = DEFAULT_SICK_LEAVE + DEFAULT_CASUAL_LEAVE + DEFAULT_EARNED_LEAVE + DEFAULT_FESTIVAL_LEAVE;
+        
+        // Create variables for bind_param
+        $sick_leave = DEFAULT_SICK_LEAVE;
+        $casual_leave = DEFAULT_CASUAL_LEAVE;
+        $earned_leave = DEFAULT_EARNED_LEAVE;
+        $festival_leave = DEFAULT_FESTIVAL_LEAVE;
+        
+        error_log("Binding parameters for leave_balance");
+        if (!$stmt->bind_param("iiiiiii", 
+            $employee_id,
+            $sick_leave,
+            $casual_leave,
+            $earned_leave,
+            $festival_leave,
+            $total_leave,
+            $total_leave
+        )) {
+            throw new Exception('Parameter binding failed for leave_balance: ' . $stmt->error);
+        }
+        
+        error_log("Executing leave_balance insert");
+        if (!$stmt->execute()) {
+            throw new Exception('Leave balance insert failed: ' . $stmt->error);
+        }
+        error_log("Leave balance inserted successfully");
 
         // Commit transaction
-        error_log("Committing transaction");
         if (!$conn->commit()) {
-            throw new Exception('Could not commit transaction: ' . $conn->error);
+            throw new Exception('Transaction commit failed: ' . $conn->error);
         }
         error_log("Transaction committed successfully");
-        
-        sendResponse(true, 'Employee added successfully', ['employee_id' => $employee_id]);
+
+        // Send success response with separate notifications
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'success',
+            'employee' => [
+                'status' => 'success',
+                'message' => 'Employee registration completed successfully',
+                'employee_id' => $employee_id
+            ],
+            'leave_balance' => [
+                'status' => 'success',
+                'message' => 'Leave balance initialized successfully',
+                'details' => [
+                    'sick_leave' => DEFAULT_SICK_LEAVE,
+                    'casual_leave' => DEFAULT_CASUAL_LEAVE,
+                    'earned_leave' => DEFAULT_EARNED_LEAVE,
+                    'festival_leave' => DEFAULT_FESTIVAL_LEAVE,
+                    'total_leave' => $total_leave
+                ]
+            ]
+        ]);
 
     } catch (Exception $e) {
         error_log("Error in transaction: " . $e->getMessage());
-        if ($conn->ping()) {
-            $conn->rollback();
-            error_log("Transaction rolled back");
-        }
+        $conn->rollback();
         throw $e;
     }
 
 } catch (Exception $e) {
-    error_log("Error in add_employee.php: " . $e->getMessage());
-    sendResponse(false, $e->getMessage());
-} finally {
-    if (isset($conn)) {
-        error_log("Closing database connection");
-        $conn->close();
-    }
-    if (ob_get_length()) ob_end_clean();
+    error_log("Error: " . $e->getMessage());
+    header('Content-Type: application/json');
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => $e->getMessage()
+    ]);
 }
 ?>

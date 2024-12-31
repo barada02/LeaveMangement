@@ -15,7 +15,7 @@ $test_data = [
 $json_data = json_encode($test_data);
 
 // Set up cURL
-$ch = curl_init('http://localhost/leaveSystem/api/add_employee.php');
+$ch = curl_init('http://localhost/leavems/LeaveMangement/api/add_employee.php');
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
@@ -35,6 +35,15 @@ if ($curl_error) {
     echo "cURL Error: " . $curl_error . "\n";
 }
 echo "Response: " . $response . "\n";
+
+// Decode and pretty print JSON response if valid
+if ($response) {
+    $decoded = json_decode($response, true);
+    if ($decoded) {
+        echo "\nDecoded Response:\n";
+        echo json_encode($decoded, JSON_PRETTY_PRINT);
+    }
+}
 
 curl_close($ch);
 ?>

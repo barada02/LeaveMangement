@@ -120,7 +120,7 @@ CREATE TABLE `leave_log` (
 - Status-based color coding
 - Tooltip-based information display
 
-  ![Alt text](image_path)
+  ![Alt text](UI_SCs/Screenshot 2025-01-08 123010.png)
 
 ### Security Features
 - Session-based authentication
